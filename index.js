@@ -7,7 +7,6 @@ function getUsers(){
     loadingDiv.setAttribute('id','loadingContainer');
     errorDiv.setAttribute('id','errorContainer');
     loadingDiv.textContent = 'Trwa ładowanie danych..';
-    errorDiv.textContent = 'Błąd serwera';
     parent.append(loadingDiv);
     fetch('https://randomuser.me/api/?results=50&inc=name,gender,nat')
       .then(async (response)=>{
@@ -39,18 +38,8 @@ function getUsers(){
       })
       .catch((error)=>{
         loadingDiv.remove();
+        errorDiv.textContent = error.message;
         parent.append(errorDiv);
       })
 }
-
 getUsers();
-
-//<tr>
-//<td>Stosio</td> 
-//<td>Katarzyna</td> 
-//<td>Kobieta</td> 
-//<td>Polska</td> 
-//<td>Średnie</td> 
-//<td>Informatyk</td>
-//<td>Panna</td>
-//</tr>
